@@ -4,6 +4,26 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :usermane %><br>
+    <%= f.text_field :usermane, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address, class: "form-control", id: "user_input_autocomplete_address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.text_field :role, class: "form-control" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>

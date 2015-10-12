@@ -3,7 +3,6 @@
 <head>
   <title>HackathonOrange</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,6 +19,8 @@
         <% end %>
 
 <%= yield %>
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBWeea85EqWfa_N5gojQh5He9xlT0Av0qE">
+</script>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
