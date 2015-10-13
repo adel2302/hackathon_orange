@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
+
   def index
     @posts = Post.all
+  end
+
+  def by_category
+    @posts = Post.by_category_ids(params[:category])
+    render "index"
   end
 
   def show
@@ -44,4 +50,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :description, :category_id, :picture)
   end
+
 end

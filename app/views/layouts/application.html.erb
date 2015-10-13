@@ -9,6 +9,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
         <% if user_signed_in? %>
+<<<<<<< Updated upstream
             <%= form_tag '/posts/bygeocode' do %>
               <%= text_field_tag 'query' %>
               <%= hidden_field_tag 'latitude' %>
@@ -17,12 +18,23 @@
             <% end %>
             <%= link_to 'Account', edit_user_registration_path %>
             <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+=======
+          <%= form_tag "/posts/by_category", method: "post" do %>
+            <%= select_tag "category", options_for_select(@categories.map{ |v| [v.name, v.id]}) %>
+            <%= submit_tag "Valider" %>
+          <% end %>
+          <%= form_tag '/posts/bygeocode' do %>
+            <%= text_field_tag 'query' %>
+            <%= submit_tag 'search' %>
+          <% end %>
+          <%= link_to 'Account', edit_user_registration_path %>
+          <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+>>>>>>> Stashed changes
         <% else %>
-            <%= link_to 'Sign up', new_user_registration_path %>
-            <%= link_to 'Sign in', new_user_session_path %>
+          <%= link_to 'Sign up', new_user_registration_path %>
+          <%= link_to 'Sign in', new_user_session_path %>
         <% end %>
-
-<%= yield %>
+  <%= yield %>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBWeea85EqWfa_N5gojQh5He9xlT0Av0qE">
 </script>
 
