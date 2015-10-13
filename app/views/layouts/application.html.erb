@@ -7,45 +7,39 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Share and Receive</a>
-    </div>
-    <ul class="nav navbar-nav navbar-form">
-      <% if user_signed_in? %>
-        <li><%= form_tag '/posts/bygeocode', class: "navbar-form" do %>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Share and Receive</a>
+      </div>
+      <ul class="nav navbar-nav navbar-form">
+        <% if user_signed_in? %>
+          <li>
+            <%= form_tag '/posts/bygeocode', class: "navbar-form" do %>
               <%= text_field_tag 'query', nil, class: "form-control" %>
               <%= hidden_field_tag 'latitude' %>
               <%= hidden_field_tag 'longitude' %>
               <%= submit_tag 'search', class: "btn btn-default" %>
-            <% end %></li>
-          
-
-            <li><% @categories.each do |category| %>
-              <%= link_to category.name, posts_path(category: category.id, longitude: params[:longitude], latitude: params[:latitude]) %>
-            <% end %></li>
-            <li><%= link_to 'Account', edit_user_registration_path %></li>
-            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-            
+            <% end %>
+          </li>
+          <% @categories.each do |category| %>
+            <li> <%= link_to category.name, posts_path(category: category.id, longitude: params[:longitude], latitude: params[:latitude]) %></li>
+          <% end %>
+          <li><%= link_to 'Account', edit_user_registration_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <%= link_to 'Sign up', new_user_registration_path %>
           <%= link_to 'Sign in', new_user_session_path %>
-        
-         
-      <% end %>
-    </ul>
-
-  </div>
-</nav>
-
-
-
-
-
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-  <%= yield %>
+    <%= yield %>
+  </div>
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBWeea85EqWfa_N5gojQh5He9xlT0Av0qE">
 </script>
 
