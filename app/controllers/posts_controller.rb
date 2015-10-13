@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def bygeocode
-    @posts = Post.by_geocode params[:query]
+    @posts = Post.by_geocode [params[:latitude], params[:longitude]] #params[:query]
     @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
       marker.lat post.user.latitude
       marker.lng post.user.longitude

@@ -8,8 +8,10 @@ function initializeAutocomplete(id) {
 
 function onPlaceChanged() {
   var place = this.getPlace();
-
-  
+  console.log(place)
+  document.getElementById('latitude').value = place.geometry.location.lat();
+  document.getElementById('longitude').value = place.geometry.location.lng();
+ 
   for (var i in place.address_components) {
     var component = place.address_components[i];
     for (var j in component.types) { 
@@ -21,4 +23,5 @@ function onPlaceChanged() {
   }
 }
 
-initializeAutocomplete('user_input_autocomplete_address'); 
+//initializeAutocomplete('user_input_autocomplete_address');
+initializeAutocomplete('query');

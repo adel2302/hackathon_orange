@@ -11,6 +11,8 @@
         <% if user_signed_in? %>
             <%= form_tag '/posts/bygeocode' do %>
               <%= text_field_tag 'query' %>
+              <%= hidden_field_tag 'latitude' %>
+              <%= hidden_field_tag 'longitude' %>
               <%= submit_tag 'search' %>
             <% end %>
             <%= link_to 'Account', edit_user_registration_path %>
