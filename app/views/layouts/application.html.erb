@@ -25,6 +25,7 @@
           <% @categories.each do |category| %>
             <li> <%= link_to category.name, posts_path(category: category.id, longitude: params[:longitude], latitude: params[:latitude]) %></li>
           <% end %>
+          <li><%= link_to 'News', infos_path %></li>
           <li><%= link_to 'Account', edit_user_registration_path %></li>
           <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
         <% else %>

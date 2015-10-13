@@ -1,13 +1,17 @@
-<div>
+<div class="posts col-md-6">
   <% @posts.each do |post| %>
-    <%= post.user.usermane %>
-    <%= post.category.name %>
-    <%= post.title %>
-    <%= post.description %>
-    <%= post.created_at %>
-    <%= image_tag post.picture.url %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= post.title %> by <%= post.user.usermane %> in <%= post.category.name %></div>
+    <div class="panel-body">
+      <%= image_tag post.picture.url(:medium), class: "thumbnail", style: "width: 100px" %>
+      <%= post.description %>
+    </div>
+  </div>
   <% end %>
 </div>
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+
+<div class="maps col-md-6">
+  <div style='width: 100%;'>
+    <div id="map" class="thumbnail" style='width: 100%; height: 500px;'></div>
+  </div>
 </div>
