@@ -1,3 +1,13 @@
+<div>
+  <% @posts.each do |post| %>
+    <%= post.user.usermane %>
+    <%= post.category.name %>
+    <%= post.title %>
+    <%= post.description %>
+    <%= post.created_at %>
+    <%= image_tag post.picture.url %>
+  <% end %>
+</div>
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
