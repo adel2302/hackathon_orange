@@ -1,5 +1,8 @@
 <% @infos.each do |info| %>
-  <%= info.user.usermane %>
-  <%= info.title %>
-  <%= info.content %>
+  <div class="panel panel-default">
+  <div class="panel-heading"><%= info.title %> by <%= info.user.usermane %></div>
+  <div class= "panel-body">
+    <%= info.content %>
+  </div>
+  </div>
 <% end %>
