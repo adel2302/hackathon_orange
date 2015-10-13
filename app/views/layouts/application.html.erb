@@ -10,7 +10,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Share and Receive</a>
+        <a class="navbar-brand" href="/posts">Share and Receive</a>
       </div>
       <ul class="nav navbar-nav navbar-form">
         <% if user_signed_in? %>
@@ -26,6 +26,7 @@
             <li> <%= link_to category.name, posts_path(category: category.id, longitude: params[:longitude], latitude: params[:latitude]) %></li>
           <% end %>
           <li><%= link_to 'News', infos_path %></li>
+          <li><%= link_to 'New Post', new_post_path %></li>
           <li><%= link_to 'Account', edit_user_registration_path %></li>
           <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
         <% else %>
