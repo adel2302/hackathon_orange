@@ -1,7 +1,24 @@
-<%= form_for @post do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
-  <%= f.select :category_id, options_for_select(@categories.map{|category| [category.name, category.id]}) %>
-  <%= f.file_field :picture %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 well">
+    <h2> New Post </h2>
+    <%= form_for @post do |f| %>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.select :category_id, options_for_select(@categories.map{|category| [category.name, category.id]}) %>
+      </div>
+      <div class="form-group">
+        <%= f.file_field :picture %>
+      </div>
+      <div class="actions">
+      <%= f.submit "Valider", class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,16 @@
-<%= form_for @info do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :content %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 well">
+    <h2>New Info</h2>
+    <%= form_for @info do |f| %>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content %><br> 
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+      <%= f.submit "Valider", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
