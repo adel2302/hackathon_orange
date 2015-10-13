@@ -4,7 +4,8 @@
     <div class="panel-heading"><%= link_to post.title , "/posts/#{post.id}" %> by <%= link_to post.user.usermane, "/users/#{post.user.id}" %> in <%= post.category.name %></div>
     <div class="panel-body">
       <%= image_tag post.picture.url(:medium), class: "thumbnail", style: "width: 100px" %>
-      <%= post.description %>
+      <p><%= post.description %></p>
+      <p><%= link_to "Demander" , "/posts/#{post.id}", class: "btn btn-default"%></p>
     </div>
   </div>
   <% end %>
@@ -15,4 +16,3 @@
     <div id="map" class="thumbnail" style='width: 100%; height: 500px;'></div>
   </div>
 </div>
- 

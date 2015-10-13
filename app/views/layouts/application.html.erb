@@ -19,26 +19,30 @@
               <%= text_field_tag 'query', nil, class: "form-control" %>
               <%= hidden_field_tag 'latitude' %>
               <%= hidden_field_tag 'longitude' %>
-              <%= submit_tag 'search', class: "btn btn-default" %>
+              <%= submit_tag 'Rechercher', class: "btn btn-default" %>
             <% end %>
           </li>
           <% @categories.each do |category| %>
             <li> <%= link_to category.name, posts_path(category: category.id, longitude: params[:longitude], latitude: params[:latitude]) %></li>
           <% end %>
-          <li><%= link_to 'News', infos_path %></li>
-          <li><%= link_to 'New Post', new_post_path %></li>
-          <li><%= link_to 'Account', edit_user_registration_path %></li>
-          <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+          <li><%= link_to 'Infos', infos_path %></li>
+          <% if current_user.role == "receveur" %>
+            <li><%= link_to 'Demander', new_post_path %></li>
+          <% else %>
+            <li><%= link_to 'Donner', new_post_path %></li>
+          <% end %>
+          <li><%= link_to 'Profil', edit_user_registration_path %></li>
+          <li><%= link_to 'Déconnecter', destroy_user_session_path, :method => :delete %></li>
         <% else %>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <li><%= link_to 'Inscription', new_user_registration_path %></li>
+          <li><%= link_to 'Connexion', new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
   </nav>
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!--<div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>-->
     <%= yield %>
   </div>
 
