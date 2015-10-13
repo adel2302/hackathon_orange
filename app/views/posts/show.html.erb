@@ -1,5 +1,11 @@
-<%= @post.user.usermane %>
-<%= @post.title %>
-<%= @post.description %>
-<%= @post.created_at %>
-<%= image_tag @post.picture.url %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @post.title %> by <%= link_to @post.user.usermane, "/users/#{@post.user.id}" %> in <%= @post.category.name %></div>
+    <div class="panel-body">
+      <%= image_tag @post.picture.url(:medium), class: "thumbnail", style: "width: 100px" %>
+      <%= @post.description %>
+ 	    <div class="panel-body">
+	      <textarea class="form-control" rows="3"></textarea><br>
+	        <button class="btn btn-default" type="submit">Répondre</button>
+	    </div>
+	 </div>
+</div>
