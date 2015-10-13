@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20151012135910) do
     t.string   "usermane"
     t.string   "address"
     t.float    "latitude"
-    t.float    "longitute"
+    t.float    "longitude"
     t.string   "phone"
     t.string   "role"
   end

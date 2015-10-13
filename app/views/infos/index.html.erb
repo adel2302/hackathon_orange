@@ -1,2 +1,5 @@
-<h1>Infos#index</h1>
-<p>Find me in app/views/infos/index.html.erb</p>
+<% @infos.each do |info| %>
+  <%= info.user.usermane %>
+  <%= info.title %>
+  <%= info.content %>
+<% end %>

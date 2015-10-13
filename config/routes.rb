@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
-  get 'profiles/index'
-
-  get 'profiles/show'
-
-  get 'infos/index'
-
-  get 'infos/show'
-
-  get 'posts/index'
-
-  get 'posts/show'
+  resources :infos
+  resources :posts do
+    collection do
+      post 'bygeocode'
+    end
+  end
+  resources :profile
 
   devise_for :users, :controllers => {registrations: 'registrations'}
   root 'pages#home'

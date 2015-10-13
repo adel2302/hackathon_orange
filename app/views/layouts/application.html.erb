@@ -9,18 +9,34 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
         <% if user_signed_in? %>
+            <%= form_tag '/posts/bygeocode' do %>
+              <%= text_field_tag 'query' %>
+              <%= submit_tag 'search' %>
+            <% end %>
             <%= link_to 'Account', edit_user_registration_path %>
-
-            <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %> 
+            <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
         <% else %>
-            <%= link_to 'Sign up', new_user_registration_path %> 
-
+            <%= link_to 'Sign up', new_user_registration_path %>
             <%= link_to 'Sign in', new_user_session_path %>
         <% end %>
 
 <%= yield %>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBWeea85EqWfa_N5gojQh5He9xlT0Av0qE">
 </script>
+
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers( <%=raw @hash.to_json %> );
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
+
+
 </body>
 </html>
