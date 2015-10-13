@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       post 'bygeocode'
-      post 'by_category'
     end
   end
   resources :profile

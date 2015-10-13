@@ -2,11 +2,19 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-  end
-
-  def by_category
-    @posts = Post.by_category_ids(params[:category])
-    render "index"
+    if params[:category]
+      @posts = @posts.by_category_ids(params[:category])
+    end
+    if params[:longitude] && params[:latitude]
+      @posts = @posts.by_geocode [params[:latitude], params[:longitude]] #params[:query]
+      
+    end
+    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+      marker.lat post.user.latitude
+      marker.lng post.user.longitude
+      marker.infowindow post.title
+    end
+    render "map"
   end
 
   def show
